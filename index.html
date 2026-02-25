@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Bridge Education Expo 2026 — Registration</title>
+  <meta name="description" content="Register for Career Bridge Education Expo 2026 in Warangal. Free entry for students exploring career options after 10th." />
+  <style> 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-gradient-start: #3b9ecf;
+      --bg-gradient-end: #3bbfa0;
+      --card-bg: rgba(255,255,255,0.82);
+      --card-border: rgba(255,255,255,0.45);
+      --text-dark: #1a2d40;
+      --text-muted: #5a7080;
+      --primary: #1a8fad;
+      --primary-light: rgba(26,143,173,0.1);
+      --accent: #3bbfa0;
+      --border-color: #d0dce5;
+      --destructive: #e55353;
+      --radius: 0.75rem;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-dark);
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Decorative blobs */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before {
+      width: 400px; height: 400px;
+      top: -120px; left: -80px;
+      background: rgba(26,143,173,0.25);
+    }
+    body::after {
+      width: 350px; height: 350px;
+      bottom: -100px; right: -60px;
+      background: rgba(59,191,160,0.25);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem;
+    }
+
+    /* Fade-up animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s ease-out both;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .hero .subtitle {
+      margin-top: 0.5rem;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+    }
+    .hero .description {
+      margin-top: 0.75rem;
+      font-size: 0.925rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 480px;
+      margin-inline: auto;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* Glass Card */
+    .form-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      animation: fadeUp 0.6s ease-out 0.2s both;
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+
+    /* Form fields */
+    .field { margin-bottom: 1.25rem; }
+    .field label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--text-dark);
+    }
+    .field label .optional {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field input[type="date"],
+    .field select {
+      width: 100%;
+      height: 2.75rem;
+      padding: 0 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: var(--white);
+      font-size: 0.925rem;
+      color: var(--text-dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .field input:focus, .field select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26,143,173,0.15);
+    }
+    .field .error-msg {
+      font-size: 0.8rem;
+      color: var(--destructive);
+      margin-top: 0.3rem;
+      display: none;
+    }
+    .field.has-error input,
+    .field.has-error select {
+      border-color: var(--destructive);
+    }
+    .field.has-error .error-msg { display: block; }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.25rem;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-weight: 400;
+    }
+    .radio-group input[type="radio"] {
+      accent-color: var(--primary);
+      width: 16px; height: 16px;
+    }
+
+    /* Selectable cards grid */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    @media (min-width: 480px) {
+      .options-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .option-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--white);
+      text-align: left;
+      transition: all 0.2s;
+      color: var(--text-dark);
+    }
+    .option-card:hover { border-color: rgba(26,143,173,0.4); }
+    .option-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+      box-shadow: 0 1px 4px rgba(26,143,173,0.12);
+    }
+
+    /* Checkbox confirmation */
+    .confirm-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .confirm-row input[type="checkbox"] {
+      accent-color: var(--primary);
+      width: 18px; height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .confirm-row label {
+      font-size: 0.875rem;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    /* Submit button */
+    .submit-btn {
+      margin-top: 1.5rem;
+      width: 100%;
+      height: 3rem;
+      border: none;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(26,143,173,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,143,173,0.35);
+    }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 20px; height: 20px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+    .submit-btn.loading .spinner { display: block; }
+    .submit-btn.loading .btn-text { display: none; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 2rem;
+    }
+
+    /* Modal overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.visible { display: flex; }
+    .modal {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+      animation: fadeUp 0.4s ease-out;
+    }
+    .modal .icon { font-size: 3rem; margin-bottom: 0.75rem; }
+    .modal h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .modal p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    .modal .done-btn {
+      margin-top: 1.25rem;
+      padding: 0.6rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--white);
+      font-size: 0.925rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .modal .done-btn:hover { transform: translateY(-1px); }
+
+    @media (min-width: 640px) {
+      .container { padding: 4rem 1rem; }
+      .form-card { padding: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Career Bridge Education Expo 2026</h1>
+    <p class="subtitle">Student Registration Form</p>
+    <p class="description">Welcome to Career Bridge Education Expo 2026. Please fill in the details below to confirm your participation.</p>
+    <div class="badges">
+      <span class="badge">📅 April 2026</span>
+      <span class="badge">📍 Warangal</span>
+      <span class="badge">🎟 Entry: Free</span>
+    </div>
+  </header>
+
+  <!-- Form -->
+  <div class="form-card">
+    <form id="registrationForm" novalidate>
+
+      <!-- Student Details -->
+      <h3 class="section-title">📌 Student Details</h3>
+
+      <div class="field" id="field-name">
+        <label for="studentName">Student Full Name</label>
+        <input type="text" id="studentName" placeholder="Enter full name" maxlength="100" />
+        <p class="error-msg">Name must be at least 2 characters</p>
+      </div>
+
+      <div class="field" id="field-dob">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" max="" />
+        <p class="error-msg">Date of birth is required</p>
+      </div>
+
+      <div class="field" id="field-gender">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="Male" /> Male</label>
+          <label><input type="radio" name="gender" value="Female" /> Female</label>
+          <label><input type="radio" name="gender" value="Other" /> Other</label>
+        </div>
+        <p class="error-msg">Please select gender</p>
+      </div>
+
+      <div class="field" id="field-school">
+        <label for="schoolName">School Name</label>
+        <input type="text" id="schoolName" placeholder="Enter school name" maxlength="200" />
+        <p class="error-msg">School name is required</p>
+      </div>
+
+      <div class="field" id="field-board">
+        <label for="board">10th Class Board</label>
+        <select id="board">
+          <option value="" disabled selected>Select board</option>
+          <option value="SSC">SSC</option>
+          <option value="CBSE">CBSE</option>
+          <option value="ICSE">ICSE</option>
+          <option value="Other">Other</option>
+        </select>
+        <p class="error-msg">Please select your board</p>
+      </div>
+
+      <div class="field" id="field-options">
+        <label>Preferred Option After 10th</label>
+        <div class="options-grid" id="optionsGrid"></div>
+        <p class="error-msg">Select at least one option</p>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Parent Details -->
+      <h3 class="section-title">📌 Parent / Guardian Details</h3>
+
+      <div class="field" id="field-parent">
+        <label for="parentName">Parent / Guardian Name</label>
+        <input type="text" id="parentName" placeholder="Enter parent/guardian name" maxlength="100" />
+        <p class="error-msg">Parent/Guardian name is required</p>
+      </div>
+
+      <div class="field" id="field-phone">
+        <label for="parentPhone">Contact Number</label>
+        <input type="tel" id="parentPhone" placeholder="10-digit mobile number" maxlength="10" />
+        <p class="error-msg">Enter a valid 10-digit mobile number</p>
+      </div>
+
+      <div class="field" id="field-email">
+        <label for="parentEmail">Email <span class="optional">(optional)</span></label>
+        <input type="email" id="parentEmail" placeholder="parent@example.com" />
+        <p class="error-msg">Enter a valid email</p>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Confirmation -->
+      <div class="field" id="field-confirm">
+        <div class="confirm-row">
+          <input type="checkbox" id="confirmation" />
+          <label for="confirmation">I confirm my participation in Career Bridge Education Expo 2026.</label>
+        </div>
+        <p class="error-msg">You must confirm your participation</p>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span class="spinner"></span>
+        <span class="btn-text">Register Now</span>
+        <span class="loading-text" style="display:none">Submitting...</span>
+      </button>
+    </form>
+  </div>
+
+  <p class="footer">© 2026 Career Bridge Education Expo. All rights reserved.</p>
+</div>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="icon">🎉</div>
+    <h2>Registration Successful!</h2>
+    <p>Thank you for registering for Career Bridge Education Expo 2026. We look forward to seeing you in Warangal!</p>
+    <button class="done-btn" id="doneBtn">Done</button>
+  </div>
+</div>
+
+<script>
+  // ===== Preferred Options Setup =====
+  const options = [
+    "Intermediate – MPC, BIPC, CEC, MEC, HEC, Vocational",
+    "Polytechnic Diploma (Engineering)",
+    "ITI (Industrial Training Institute)",
+    "Paramedical Courses",
+    "Agriculture / Horticulture Courses",
+    "Open Schooling",
+    "Defence / NDA Preparation",
+    "Others"
+  ];
+
+  const selectedOptions = new Set();
+  const grid = document.getElementById("optionsGrid");
+
+  options.forEach(opt => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "option-card";
+    card.textContent = opt;
+
+    card.addEventListener("click", () => {
+      if (selectedOptions.has(opt)) {
+        selectedOptions.delete(opt);
+        card.classList.remove("selected");
+      } else {
+        selectedOptions.add(opt);
+        card.classList.add("selected");
+      }
+    });
+
+    grid.appendChild(card);
+  });
+
+  // ===== Set max DOB =====
+  document.getElementById("dob").max =
+    new Date().toISOString().split("T")[0];
+
+  // ===== Form Submit Logic =====
+  const form = document.getElementById("registrationForm");
+  const submitBtn = document.getElementById("submitBtn");
+
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbzo5S-yEoTK75LZMyH27cwf76l9m5DVr66e74vOq6Tz6yTb1BO68EYHMrjywwBJy2pt8w/exec";
+
+  function setError(id, show) {
+    document.getElementById(id).classList.toggle("has-error", show);
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const name = document.getElementById("studentName").value.trim();
+    setError("field-name", name.length < 2);
+    if (name.length < 2) valid = false;
+
+    const dob = document.getElementById("dob").value;
+    setError("field-dob", !dob);
+    if (!dob) valid = false;
+
+    const gender = document.querySelector(
+      'input[name="gender"]:checked'
+    );
+    setError("field-gender", !gender);
+    if (!gender) valid = false;
+
+    const school = document.getElementById("schoolName").value.trim();
+    setError("field-school", school.length < 2);
+    if (school.length < 2) valid = false;
+
+    const board = document.getElementById("board").value;
+    setError("field-board", !board);
+    if (!board) valid = false;
+
+    setError("field-options", selectedOptions.size === 0);
+    if (selectedOptions.size === 0) valid = false;
+
+    const parent = document.getElementById("parentName").value.trim();
+    setError("field-parent", parent.length < 2);
+    if (parent.length < 2) valid = false;
+
+    const phone = document.getElementById("parentPhone").value.trim();
+    const phoneValid = /^[6-9]\d{9}$/.test(phone);
+    setError("field-phone", !phoneValid);
+    if (!phoneValid) valid = false;
+
+    const email = document.getElementById("parentEmail").value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("field-email", true);
+      valid = false;
+    } else {
+      setError("field-email", false);
+    }
+
+    const confirmed =
+      document.getElementById("confirmation").checked;
+    setError("field-confirm", !confirmed);
+    if (!confirmed) valid = false;
+
+    if (!valid) return;
+
+    // ===== Show Loading =====
+    submitBtn.classList.add("loading");
+    submitBtn.disabled = true;
+
+    const data = {
+      studentName: name,
+      dob,
+      gender: gender.value,
+      schoolName: school,
+      board,
+      preferredOptions: [...selectedOptions],
+      parentName: parent,
+      parentPhone: phone,
+      parentEmail: email || ""
+    };
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+
+      });
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+        document
+          .getElementById("successModal")
+          .classList.add("visible");
+
+        form.reset();
+        selectedOptions.clear();
+        document
+          .querySelectorAll(".option-card")
+          .forEach(c => c.classList.remove("selected"));
+      } else {
+        alert("Submission failed. Try again.");
+      }
+    } catch (error) {
+      alert("Error submitting form. Check connection.");
+    }
+
+    submitBtn.classList.remove("loading");
+    submitBtn.disabled = false;
+  });
+
+  // ===== Close Success Modal =====
+  document
+    .getElementById("doneBtn")
+    .addEventListener("click", () => {
+      document
+        .getElementById("successModal")
+        .classList.remove("visible");
+    });
+</script>
+
+</body>
+</html>
