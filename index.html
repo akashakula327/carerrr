@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Decorative blobs */
     body::before, body::after {
       content: '';
       position: fixed;
@@ -62,13 +61,11 @@
       padding: 2.5rem 1rem;
     }
 
-    /* Fade-up animation */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero */
     .hero {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -114,7 +111,6 @@
       color: var(--white);
     }
 
-    /* Glass Card */
     .form-card {
       background: var(--card-bg);
       backdrop-filter: blur(20px);
@@ -125,7 +121,6 @@
       animation: fadeUp 0.6s ease-out 0.2s both;
     }
 
-    /* Sections */
     .section-title {
       font-size: 1.1rem;
       font-weight: 600;
@@ -140,7 +135,6 @@
       margin: 2rem 0;
     }
 
-    /* Form fields */
     .field { margin-bottom: 1.25rem; }
     .field label {
       display: block;
@@ -185,7 +179,6 @@
     }
     .field.has-error .error-msg { display: block; }
 
-    /* Radio group */
     .radio-group {
       display: flex;
       gap: 1.5rem;
@@ -203,7 +196,7 @@
       width: 16px; height: 16px;
     }
 
-    /* Selectable cards grid */
+    /* Selectable cards grid — single select */
     .options-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -224,6 +217,9 @@
       text-align: left;
       transition: all 0.2s;
       color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
     .option-card:hover { border-color: rgba(26,143,173,0.4); }
     .option-card.selected {
@@ -232,8 +228,28 @@
       color: var(--primary);
       box-shadow: 0 1px 4px rgba(26,143,173,0.12);
     }
+    /* Radio dot indicator inside card */
+    .option-card .radio-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      flex-shrink: 0;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .option-card.selected .radio-dot {
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+    .option-card.selected .radio-dot::after {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: white;
+    }
 
-    /* Checkbox confirmation */
     .confirm-row {
       display: flex;
       align-items: flex-start;
@@ -251,7 +267,6 @@
       line-height: 1.5;
     }
 
-    /* Submit button */
     .submit-btn {
       margin-top: 1.5rem;
       width: 100%;
@@ -280,7 +295,6 @@
       transform: none;
     }
 
-    /* Spinner */
     @keyframes spin { to { transform: rotate(360deg); } }
     .spinner {
       width: 20px; height: 20px;
@@ -293,7 +307,49 @@
     .submit-btn.loading .spinner { display: block; }
     .submit-btn.loading .btn-text { display: none; }
 
-    /* Footer */
+    /* Sub-option cards for Intermediate */
+    .sub-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 0.6rem 0.85rem;
+      font-size: 0.825rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: #f7fbfc;
+      text-align: left;
+      transition: all 0.2s;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sub-card:hover { border-color: rgba(26,143,173,0.4); background: #eef7fa; }
+    .sub-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+    .sub-card .radio-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      flex-shrink: 0;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sub-card.selected .radio-dot {
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+    .sub-card.selected .radio-dot::after {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: white;
+    }
+
     .footer {
       text-align: center;
       font-size: 0.75rem;
@@ -301,7 +357,6 @@
       margin-top: 2rem;
     }
 
-    /* Modal overlay */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -350,7 +405,6 @@
 <body>
 
 <div class="container">
-  <!-- Hero -->
   <header class="hero">
     <h1>Career Bridge Education Expo 2026</h1>
     <p class="subtitle">Student Registration Form</p>
@@ -362,11 +416,9 @@
     </div>
   </header>
 
-  <!-- Form -->
   <div class="form-card">
     <form id="registrationForm" novalidate>
 
-      <!-- Student Details -->
       <h3 class="section-title">📌 Student Details</h3>
 
       <div class="field" id="field-name">
@@ -410,14 +462,13 @@
       </div>
 
       <div class="field" id="field-options">
-        <label>Preferred Option After 10th</label>
+        <label>Preferred Option After 10th <span style="font-size:0.78rem;color:var(--text-muted);font-weight:400">(Select one)</span></label>
         <div class="options-grid" id="optionsGrid"></div>
-        <p class="error-msg">Select at least one option</p>
+        <p class="error-msg">Please select one option</p>
       </div>
 
       <hr class="divider" />
 
-      <!-- Parent Details -->
       <h3 class="section-title">📌 Parent / Guardian Details</h3>
 
       <div class="field" id="field-parent">
@@ -440,7 +491,6 @@
 
       <hr class="divider" />
 
-      <!-- Confirmation -->
       <div class="field" id="field-confirm">
         <div class="confirm-row">
           <input type="checkbox" id="confirmation" />
@@ -452,7 +502,6 @@
       <button type="submit" class="submit-btn" id="submitBtn">
         <span class="spinner"></span>
         <span class="btn-text">Register Now</span>
-        <span class="loading-text" style="display:none">Submitting...</span>
       </button>
     </form>
   </div>
@@ -471,9 +520,9 @@
 </div>
 
 <script>
-  // ===== Preferred Options Setup =====
+  // ===== Preferred Options — SINGLE SELECT with Intermediate sub-options =====
   const options = [
-    "Intermediate – MPC, BIPC, CEC, MEC, HEC, Vocational",
+    { label: "Intermediate", sub: ["MPC", "BiPC", "MEC", "CEC", "HEC", "Vocational"] },
     "Polytechnic Diploma (Engineering)",
     "ITI (Industrial Training Institute)",
     "Paramedical Courses",
@@ -483,38 +532,77 @@
     "Others"
   ];
 
-  const selectedOptions = new Set();
+  let selectedOption = "";
   const grid = document.getElementById("optionsGrid");
 
+  function deselectAll() {
+    document.querySelectorAll(".option-card, .sub-card").forEach(c => c.classList.remove("selected"));
+    document.querySelectorAll(".sub-group").forEach(g => g.style.display = "none");
+    document.querySelectorAll(".option-card.has-sub .arrow").forEach(a => a.textContent = "\u25b8");
+    selectedOption = "";
+  }
+
   options.forEach(opt => {
+    const isGroup = typeof opt === "object";
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "option-card";
-    card.textContent = opt;
+    card.className = "option-card" + (isGroup ? " has-sub" : "");
 
-    card.addEventListener("click", () => {
-      if (selectedOptions.has(opt)) {
-        selectedOptions.delete(opt);
-        card.classList.remove("selected");
-      } else {
-        selectedOptions.add(opt);
+    if (isGroup) {
+      card.innerHTML = `<span class="radio-dot"></span><span style="flex:1">${opt.label}</span><span class="arrow" style="font-size:0.8rem;color:var(--text-muted)">\u25b8</span>`;
+      card.style.gridColumn = "1 / -1";
+
+      const subGroup = document.createElement("div");
+      subGroup.className = "sub-group";
+      subGroup.style.cssText = "display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:0.5rem;padding:0.25rem 0 0.25rem 1rem;";
+
+      opt.sub.forEach(sub => {
+        const subCard = document.createElement("button");
+        subCard.type = "button";
+        subCard.className = "sub-card";
+        subCard.innerHTML = `<span class="radio-dot"></span>Intermediate \u2013 ${sub}`;
+        subCard.addEventListener("click", (e) => {
+          e.stopPropagation();
+          document.querySelectorAll(".sub-card").forEach(c => c.classList.remove("selected"));
+          subCard.classList.add("selected");
+          selectedOption = `Intermediate \u2013 ${sub}`;
+          document.getElementById("field-options").classList.remove("has-error");
+        });
+        subGroup.appendChild(subCard);
+      });
+
+      card.addEventListener("click", () => {
+        const isOpen = subGroup.style.display === "grid";
+        deselectAll();
+        if (!isOpen) {
+          card.classList.add("selected");
+          subGroup.style.display = "grid";
+          card.querySelector(".arrow").textContent = "\u25be";
+        }
+      });
+
+      grid.appendChild(card);
+      grid.appendChild(subGroup);
+    } else {
+      card.innerHTML = `<span class="radio-dot"></span>${opt}`;
+      card.addEventListener("click", () => {
+        deselectAll();
         card.classList.add("selected");
-      }
-    });
-
-    grid.appendChild(card);
+        selectedOption = opt;
+        document.getElementById("field-options").classList.remove("has-error");
+      });
+      grid.appendChild(card);
+    }
   });
 
   // ===== Set max DOB =====
-  document.getElementById("dob").max =
-    new Date().toISOString().split("T")[0];
+  document.getElementById("dob").max = new Date().toISOString().split("T")[0];
 
-  // ===== Form Submit Logic =====
+  // ===== Form Submit =====
   const form = document.getElementById("registrationForm");
   const submitBtn = document.getElementById("submitBtn");
 
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzo5S-yEoTK75LZMyH27cwf76l9m5DVr66e74vOq6Tz6yTb1BO68EYHMrjywwBJy2pt8w/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyK9KBpvZdE7P_H6yGwfJBkbhbgJ-j82Bb-Hr17eE02T52Rjy7ABBY3teZIOk4ZbHPV/exec";
 
   function setError(id, show) {
     document.getElementById(id).classList.toggle("has-error", show);
@@ -532,9 +620,7 @@
     setError("field-dob", !dob);
     if (!dob) valid = false;
 
-    const gender = document.querySelector(
-      'input[name="gender"]:checked'
-    );
+    const gender = document.querySelector('input[name="gender"]:checked');
     setError("field-gender", !gender);
     if (!gender) valid = false;
 
@@ -546,8 +632,9 @@
     setError("field-board", !board);
     if (!board) valid = false;
 
-    setError("field-options", selectedOptions.size === 0);
-    if (selectedOptions.size === 0) valid = false;
+    // Single option validation
+    setError("field-options", !selectedOption);
+    if (!selectedOption) valid = false;
 
     const parent = document.getElementById("parentName").value.trim();
     setError("field-parent", parent.length < 2);
@@ -566,14 +653,12 @@
       setError("field-email", false);
     }
 
-    const confirmed =
-      document.getElementById("confirmation").checked;
+    const confirmed = document.getElementById("confirmation").checked;
     setError("field-confirm", !confirmed);
     if (!confirmed) valid = false;
 
     if (!valid) return;
 
-    // ===== Show Loading =====
     submitBtn.classList.add("loading");
     submitBtn.disabled = true;
 
@@ -583,51 +668,42 @@
       gender: gender.value,
       schoolName: school,
       board,
-      preferredOptions: [...selectedOptions],
+      preferredOption: selectedOption,   // single string now
       parentName: parent,
       parentPhone: phone,
       parentEmail: email || ""
     };
 
     try {
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data),
+      // Send as URL-encoded form data — works reliably with Google Apps Script
+      const formData = new URLSearchParams(data);
 
+      await fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString()
       });
 
-      const result = await response.json();
-
-      if (result.result === "success") {
-        document
-          .getElementById("successModal")
-          .classList.add("visible");
-
-        form.reset();
-        selectedOptions.clear();
-        document
-          .querySelectorAll(".option-card")
-          .forEach(c => c.classList.remove("selected"));
-      } else {
-        alert("Submission failed. Try again.");
-      }
+      document.getElementById("successModal").classList.add("visible");
+      form.reset();
+      selectedOption = "";
+      document.querySelectorAll(".option-card, .sub-card").forEach(c => c.classList.remove("selected"));
+      document.querySelectorAll(".sub-group").forEach(g => g.style.display = "none");
+      document.querySelectorAll(".option-card.has-sub .arrow").forEach(a => a.textContent = "\u25b8");
     } catch (error) {
-      alert("Error submitting form. Check connection.");
+      alert("Error submitting form. Check your connection and try again.");
     }
 
     submitBtn.classList.remove("loading");
     submitBtn.disabled = false;
   });
 
-  // ===== Close Success Modal =====
-  document
-    .getElementById("doneBtn")
-    .addEventListener("click", () => {
-      document
-        .getElementById("successModal")
-        .classList.remove("visible");
-    });
+  document.getElementById("doneBtn").addEventListener("click", () => {
+    document.getElementById("successModal").classList.remove("visible");
+  });
 </script>
 
 </body>
 </html>
+
